@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feel-deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: feel
+  template:
+    metadata:
+      labels:
+        app: feel
+    spec:
+      containers:
+        - name: feellab
+          image: feellab/k8s:v2
+

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yh-sample-multi-container-pod
+spec:
+  containers:
+    - name: nginx-contianer
+      image: nginx:latest
+      ports:
+      - containerPort: 80
+    - name: curl-container
+      image: alpine:latest
+      command: ["/bin/sh", "-c"]
+      args: ["while true; do sleep 30; done"]
+
