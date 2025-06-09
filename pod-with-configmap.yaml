@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+spec:
+  containers:
+    - name: demo-container
+      image: busybox
+      command: ["sh", "-c", "env && sleep 3600"]
+      env:
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: yh-config
+              key: APP_ENV
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: yh-config
+              key: LOG_LEVEL
