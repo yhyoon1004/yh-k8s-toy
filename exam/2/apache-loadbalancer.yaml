@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-06-10T02:32:41Z"
+  labels:
+    app: apache-web
+  name: apache-loadbalancer
+  namespace: default
+  resourceVersion: "177297"
+  uid: e778d17a-8ab5-4822-b339-304cc163879c
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.99.238.44
+  clusterIPs:
+  - 10.99.238.44
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31376
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: apache-web
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: configmap-demo
+  name: configmap-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configmap-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: configmap-demo
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        resources: {}
+        envFrom:
+        - configMapRef:
+            name: app-config
+status: {}
