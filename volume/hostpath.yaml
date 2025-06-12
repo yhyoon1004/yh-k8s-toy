@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: host-volume
+  volumes:
+    - name: host-volume
+      hostPath:
+        path: /Users/yunhwan/docker/volume
+        type: DirectoryOrCreate
