@@ -1,0 +1,22 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-cluster
+  region: ap-northeast-2
+  version: "1.27"
+
+nodeGroups:
+  - name: standard-workers
+    instanceType: t3.small
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 3
+    volumeSize: 20           # EBS 볼륨 크기 (GiB)
+    ssh:
+      allow: true            # SSH 허용 여부
+      publicKeyName: aws-yh-key  # EC2 키페어 이름
+    tags:
+      NodePurpose: dev
+
+managedNodeGroups: []       # (혹은 managedNodeGroups: [{...}] 형태로도 가능)
